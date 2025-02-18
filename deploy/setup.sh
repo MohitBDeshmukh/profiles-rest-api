@@ -9,7 +9,7 @@ PROJECT_BASE_PATH='/usr/local/apps/profiles-rest-api'
 
 echo "Installing dependencies..."
 apt-get update
-apt-get install -y python3-dev python3-venv sqlite3 python3-pip supervisor nginx git
+apt-get install -y python3-dev python3-venv sqlite3 python3-pip build-essential libssl-dev libpcre3 libpcre3-dev supervisor nginx git
 
 # Create project directory
 mkdir -p $PROJECT_BASE_PATH
@@ -22,8 +22,6 @@ python3 -m venv $PROJECT_BASE_PATH/env
 # Install python packages
 $PROJECT_BASE_PATH/env/bin/pip install -r $PROJECT_BASE_PATH/requirements.txt
 $PROJECT_BASE_PATH/env/bin/pip install uwsgi
-$PROJECT_BASE_PATH/env/bin/pip install gunicorn
-
 
 # Run migrations and collectstatic
 cd $PROJECT_BASE_PATH
